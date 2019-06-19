@@ -1,0 +1,52 @@
+	• Query: Create 5 books with the following names: C Sharp, Java, Python, PHP, Ruby
+		? Book.objects.create(title = "Java", desc="language")
+	•  Query: Create 5 different authors: Jane Austen, Emily Dickinson, Fyodor Dostoevksy, William Shakespeare, Lau Tzu
+		? Author.objects.create(first_name="Jane", last_name="Austen")
+	•  Add a new text field in the authors table called 'notes'.
+		? Update the table, then you will get an error.
+		? Attempt to migrate the tables. You will have to enter a default value.
+	•  Create and run the migration files to update the table in your database.
+		? python manage.py makemigrations
+		? python manage.py migrate
+	•  Query: Change the name of the C Sharp book to C#
+		? csharp = Book.objects.get(title="C_Sharp")
+		? csharp.__dict__
+		? csharp.title = "C#"
+		? csharp.save()
+	•  Query: Change the first name of the 4th author to Bill
+		? author = Author.objects.get(id=4)
+		? author.first_name = "Bill"
+		? author.save()
+	•  Query: Assign the first author to the first 2 books
+		? author1 = Author.objects.get(id=1)
+		? book1 = Book.objects.get(id=1)
+		? book2 = Book.objects.get(id=2)
+		? author1.books.add(book1)
+		? author1.books.add(book2)
+	•  Query: Assign the second author to the first 3 books
+		? author2 = Author.objects.get(id=2)
+		? book3 = Book.objects.get(id=3)
+		? author2.books.add(book1, book2, book3)
+	•  Query: Assign the third author to the first 4 books
+		? book4 = Book.objects.get(id=4)
+		? author3 = Author.objects.get(id=3)
+		? author3.books.add(book1, book2, book3, book4)
+	•  Query: Assign the fourth author to the first 5 books (or in other words, all the books)
+		? book5 = Book.objects.get(id=5)
+		? author4 = Author.objects.get(id=4)
+		? author4.books.add(book1, book2, book3, book4, book5)
+	•  Query: Retrieve all the authors for the 3rd book
+		? book3.Author.all()
+	•  Query: Remove the first author of the 3rd book
+		? b_remove = Author.objects.get(id=1)
+		? b3.Author.remove(b_remove)
+		? b_remove.delete()
+		? b3.Author.all()
+		? -not sure any of this is working-
+	•  Query: Add the 5th author as one of the authors of the 2nd book
+		? b2.Author.add(a5)
+	•  Query: Find all the books that the 3rd author is part of
+		? a3.books.all()
+	•  Query: Find all the authors that contributed to the 5th book
+		? b5.Author.all()
+ Submit your .txt file that contains all the queries you ran in the shell

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'books_authors_shell_app/css/style.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Books</title>
+</head>
+<body>
+    <h1>{{book.title}}</h1>
+    <h2>ID:{{book.id}}</h2>
+    <h2>Description:</h2>
+    <p>{{book.desc}}</p>
+
+    <h2>Authors:</h2>
+    <ul>
+        {% for author in author_list %}
+        <li>{{author.first_name}}</li>
+        {% endfor %}
+    </ul>
+    <form action="/add_author/" method="POST">
+        {% csrf_token %}
+        <select name="author_id">
+            {% for author in authors %}
+            <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+        <input name="book_id" type="hidden" value="{{ book.id }}">
+    </form>
+
+    <a href="/authors">Add New Author</a>
+</body>
+</html>

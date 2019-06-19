@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.left-column {
+    /* border: 2px solid red; */
+    display: inline-block;
+    width: 50%;
+}
+
+.right-column {
+    /* border: 2px solid lime; */
+    display: inline-block;
+    width: 49%;
+    vertical-align: top;
+}
+
+table {
+    border: 2px solid black;
+}
